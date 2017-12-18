@@ -32,12 +32,25 @@ ul {
 
 /* Layout */
 .container {
-  width: 1170px;
+  padding-right: 25px;
+  padding-left: 25px;
   margin: 0 auto; }
   .container::after {
     content: "";
     display: block;
     clear: both; }
+
+@media (min-width: 768px) {
+  .container {
+    width: 750px; } }
+
+@media (min-width: 992px) {
+  .container {
+    width: 970px; } }
+
+@media (min-width: 1200px) {
+  .container {
+    width: 1170px; } }
 
 .row {
   margin-left: -15px;
@@ -55,21 +68,39 @@ ul {
   padding-right: 15px;
   padding-left: 15px; }
 
-.col-md-3, .col-md-4, .col-md-6,
-.col-sm-4 {
-  float: left; }
+@media (min-width: 768px) {
+  .col-sm-6, .col-sm-4 {
+    float: left; }
+  .col-sm-6 {
+    width: 50%; }
+  .col-sm-4 {
+    width: 33.33333333%; } }
 
-.col-lg-12 {
-  width: 100%; }
+@media (min-width: 992px) {
+  .col-md-6, .col-md-4, .col-md-3 {
+    float: left; }
+  .col-md-6 {
+    width: 50%; }
+  .col-md-4 {
+    width: 33.33333333%; }
+  .col-md-3 {
+    width: 25%; } }
 
-.col-md-6 {
-  width: 50%; }
+@media (min-width: 1200px) {
+  .col-lg-12 {
+    width: 100%; } }
 
-.col-md-4, .col-sm-4 {
-  width: 33.33333333%; }
+@media (max-width: 768px) {
+  .sm-show {
+    display: none; }
+  .sm-hide {
+    display: block; } }
 
-.col-md-3 {
-  width: 25%; }
+@media (min-width: 768px) {
+  .sm-show {
+    display: block; }
+  .sm-hide {
+    display: none; } }
 
 /* Component */
 .social-buttons {
@@ -125,6 +156,27 @@ ul {
   .btn:hover {
     background-color: #ffc419; }
 
+.navbar-toggle {
+  position: relative;
+  float: right;
+  padding: 9px 10px;
+  margin-top: 8px;
+  margin-right: 15px;
+  margin-bottom: 8px;
+  background-color: #FFD14C;
+  border-color: #FFD14C;
+  border: 1px solid transparent;
+  border-radius: 4px; }
+  .navbar-toggle .icon-bar {
+    box-sizing: border-box;
+    display: block;
+    width: 22px;
+    height: 2px;
+    border-radius: 1px;
+    background-color: white; }
+  .navbar-toggle .icon-bar + .icon-bar {
+    margin-top: 4px; }
+
 /* Page */
 .navbar {
   width: 100%;
@@ -132,20 +184,23 @@ ul {
   padding: 20px 0; }
 
 .navbar-header {
-  display: inline-block; }
+  display: inline-block;
+  float: left;
+  padding: 5px 0; }
 
 .navbar-header > a {
   font-size: 2em;
   color: #FFD14C; }
 
 .navbar-nav {
-  float: right; }
+  float: right;
+  padding: 12px 0; }
   .navbar-nav > li {
     display: inline-block; }
   .navbar-nav a {
     line-height: 1.5em;
     color: white;
-    margin: 0 20px;
+    margin: 0 15px;
     text-transform: uppercase; }
     .navbar-nav a:hover {
       color: #FFD14C; }
@@ -159,21 +214,34 @@ header {
   color: #fff; }
 
 .intro {
-  padding-top: 300px;
-  padding-bottom: 200px;
+  padding-top: 100px;
+  padding-bottom: 100px;
   text-align: center; }
   .intro .lead-in {
-    font-size: 40px; }
+    font-size: 20px;
+    font-style: italic; }
   .intro .heading {
-    margin-top: 50px;
+    margin-top: 30px;
     margin-bottom: 55px;
-    font-size: 75px;
+    font-size: 50px;
     text-transform: uppercase; }
 
+@media (min-width: 768px) {
+  .intro {
+    padding-top: 300px;
+    padding-bottom: 200px; }
+    .intro .lead-in {
+      font-size: 40px; }
+    .intro .heading {
+      margin-top: 50px; } }
+
 section {
-  padding: 150px 0; }
+  padding: 100px 0; }
   section:nth-of-type(even) {
     background-color: #F7F7F7; }
+
+@media (min-width: 768px) {
+  padding: 150px 0; }
 
 .section-heading {
   margin-bottom: 15px;
@@ -210,12 +278,14 @@ section {
   color: #777777; }
 
 .portfolio-item {
-  margin: 0 0 30px; }
+  box-sizing: border-box;
+  padding: 0 30px;
+  margin-bottom: 30px; }
   .portfolio-item .portfolio-heading {
     position: relative;
     display: block;
-    width: 360px;
-    margin: 0 auto; }
+    margin: 0 auto;
+    text-align: center; }
     .portfolio-item .portfolio-heading .fa.fa-plus {
       position: absolute;
       top: 50%;
@@ -240,10 +310,10 @@ section {
     .portfolio-item .portfolio-heading img {
       display: block;
       max-width: 100%;
-      height: auto; }
+      height: auto;
+      margin: 0 auto; }
   .portfolio-item .portfolio-content {
     border: 1px solid white;
-    width: 360px;
     margin: 0 auto;
     text-align: center;
     background-color: white; }
@@ -255,7 +325,21 @@ section {
       color: #777777; }
 
 .timeline {
+  position: relative;
   width: 100%; }
+  .timeline::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 75px;
+    z-index: 0;
+    display: block;
+    width: 2px;
+    height: 100%;
+    background-color: #F1F1F1; }
+  @media (min-width: 768px) {
+    .timeline::before {
+      left: 50%; } }
   .timeline > li {
     position: relative;
     display: block;
@@ -264,19 +348,13 @@ section {
       content: "";
       display: block;
       clear: both; }
-    .timeline > li:not(:last-of-type)::after {
-      content: "";
-      position: absolute;
-      left: 50%;
-      display: block;
-      width: 0;
-      border: 1px solid #F1F1F1;
-      height: 100px; }
   .timeline .timeline-image {
     display: block;
     width: 150px;
-    height: 150px;
-    margin: 0 auto; }
+    height: 150px; }
+    @media (min-width: 768px) {
+      .timeline .timeline-image {
+        margin: 0 auto; } }
     .timeline .timeline-image img, .timeline .timeline-image h4 {
       display: block;
       box-sizing: border-box;
@@ -294,20 +372,28 @@ section {
   .timeline .timeline-panel {
     float: left;
     margin-top: -150px;
-    margin-left: 80px;
-    width: 400px;
-    text-align: right; }
+    text-align: left;
+    margin-left: 160px; }
     .timeline .timeline-panel h4 {
       margin: 5px 0;
       font-size: 1.3em; }
     .timeline .timeline-panel p {
       font-style: italic;
       color: #777777; }
-  .timeline > li:nth-of-type(even) .timeline-panel {
-    float: right;
-    margin-left: 0;
-    margin-right: 80px;
-    text-align: left; }
+  @media (min-width: 768px) {
+    .timeline .timeline-panel {
+      text-align: right;
+      margin-left: 0; } }
+  @media (min-width: 768px) {
+    .timeline .timeline-panel {
+      width: 50%;
+      padding-right: 100px;
+      padding-left: 40px; }
+    .timeline > li:nth-of-type(even) .timeline-panel {
+      float: right;
+      text-align: left;
+      padding-left: 100px;
+      padding-right: 40px; } }
 
 .team-member {
   width: 100%;
